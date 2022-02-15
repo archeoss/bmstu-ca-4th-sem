@@ -1,4 +1,7 @@
 def find_interval(table, power, arg):
+    '''
+        Возвращает начальный и конечный индексы, наиболее близких к аргументу
+    '''
     idx = idx_start = idx_end = 0
     
     while idx < table.rows and table.x[idx] < arg:

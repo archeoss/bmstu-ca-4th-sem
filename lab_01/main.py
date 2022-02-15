@@ -29,18 +29,17 @@ def main():
     x = input_float()
     print_row('n', 'x', "y(x) [Newton's pol.]")
     for power in range(MIN_POWER, MAX_POWER + 1):
-        interval = find_interval(table, power, x)
-        polynom = NewtonPolynom(power, table, interval, x)
+        polynom = NewtonPolynom(power, table, x)
         results_Newton.append(polynom)
         print_row(power, x, polynom)
     
     print()
     print_second_exercise()
-    print_row('n', 'x', "y(x) [Hermite's pol.]")
+    print_row_b('n', "Nodes", 'x', "y(x) [Hermite's pol.]")
     for power in range(MIN_POWER, MAX_POWER + 1):
         polynom = HermitePolynom(power, table, x)
         results_Hermite.append(polynom)
-        print_row(power, x, polynom)
+        print_row_b(power, (power)//2 + 1, x, polynom)
     
     print()
     print_third_exercise()
@@ -60,8 +59,7 @@ def main():
 
     print_row('n', 'y', "x(y) [Newton's pol.]")
     for power in range(MIN_POWER, MAX_POWER + 1):
-        interval = find_interval(reversed_table, power, y)
-        polynom = NewtonPolynom(power, reversed_table, interval, y)
+        polynom = NewtonPolynom(power, reversed_table, y)
         print_row(power, y, polynom)
     
     print("Success!")

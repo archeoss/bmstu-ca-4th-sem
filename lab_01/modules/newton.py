@@ -1,6 +1,10 @@
-from basic_func import *
+from .basic_func import *
 
-def NewtonPolynom(power, table, interval, arg):
+def NewtonPolynom(power, table, arg):
+    '''
+        Интерполяционный полином Ньютона
+    '''    
+    interval = find_interval(table, power, arg)
     polynom_table = []
     for i in range(1, power + 1):
         fill_polynom(polynom_table, i, table, interval)
@@ -18,6 +22,9 @@ def NewtonPolynom(power, table, interval, arg):
     return polynom_result
 
 def fill_polynom(polynoms, power, table, interval):
+    '''
+        Заполнение таблицы разделенных разностей
+    '''
     if power < 1:
         return
 

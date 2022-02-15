@@ -1,4 +1,7 @@
 def input_float():
+    '''
+        Ввод числа типа float
+    '''
     flag = True
     while flag:
         x = input("Input float: ")
@@ -11,6 +14,9 @@ def input_float():
     return x
 
 def fill_table(filename, table):
+    '''
+        Считывание таблицы из текстового файла в объект Table
+    '''
     f = open(filename, 'r')
     for row in f:
         row = list(map(float, row.split()))
