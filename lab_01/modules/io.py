@@ -1,4 +1,7 @@
 def input_float():
+    '''
+        Ввод числа типа float
+    '''
     flag = True
     while flag:
         x = input("Input float: ")
@@ -11,6 +14,9 @@ def input_float():
     return x
 
 def fill_table(filename, table):
+    '''
+        Считывание таблицы из текстового файла в объект Table
+    '''
     f = open(filename, 'r')
     for row in f:
         row = list(map(float, row.split()))
@@ -21,10 +27,10 @@ def fill_table(filename, table):
     f.close()
 
 def print_row(first_col, second_col, third_col):
-    print("{:^5} | {:^5} | {:^20}".format(first_col, second_col, third_col))
+    print("{:^10} | {:^10} | {:^20}".format(first_col, second_col, third_col))
 
 def print_row_b(first_col, second_col, third_col, forth_col):
-    print("{:^5} | {:^5} | {:^20} | {:^20}".format(first_col, second_col, third_col, forth_col))
+    print("{:^10} | {:^10} | {:^20} | {:<40}".format(first_col, second_col, third_col, forth_col))
 
 def print_first_exercise():
     print("1. Значения y(x) при степенях полиномов Ньютона n = 1,2,3,4 и 5 при фиксированном x")
@@ -37,3 +43,8 @@ def print_third_exercise():
 
 def print_forth_exercise():
     print("4. Найти корень заданной выше табличной функции с помощью обратной интерполяции, используя полином Ньютона. ")
+
+def print_table(table):
+    print_row('x', 'y', "y'")
+    for i in range(table.rows):
+        print_row(table.x[i], table.y[i], table.first_derivative[i])

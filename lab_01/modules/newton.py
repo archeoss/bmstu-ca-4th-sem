@@ -1,6 +1,10 @@
-from basic_func import *
+from .basic_func import *
 
-def NewtonPolynom(power, table, interval, arg):
+def NewtonPolynom(power, table, arg, nodes_used):
+    '''
+        Интерполяционный полином Ньютона
+    '''    
+    interval = find_interval(table, power, arg)
     polynom_table = []
     for i in range(1, power + 1):
         fill_polynom(polynom_table, i, table, interval)
@@ -9,6 +13,7 @@ def NewtonPolynom(power, table, interval, arg):
     cur = 1
     for i in range(idx_start, idx_end + 1):
         cur *= arg - table.x[i]
+        nodes_used.append(table.x[i])
         diffs.append(cur)
     polynom_result = table.y[idx_start]
     for i in range(power):
@@ -18,6 +23,9 @@ def NewtonPolynom(power, table, interval, arg):
     return polynom_result
 
 def fill_polynom(polynoms, power, table, interval):
+    '''
+        Заполнение таблицы разделенных разностей
+    '''
     if power < 1:
         return
 
