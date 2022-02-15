@@ -30,7 +30,7 @@ def main():
     print_row('n', 'x', "y(x) [Newton's pol.]")
     for power in range(MIN_POWER, MAX_POWER + 1):
         polynom = NewtonPolynom(power, table, x)
-        results_Newton.append(polynom)
+        results_Newton.append([power, polynom])
         print_row(power, x, polynom)
     
     print()
@@ -38,14 +38,14 @@ def main():
     print_row_b('n', "Nodes", 'x', "y(x) [Hermite's pol.]")
     for power in range(MIN_POWER, MAX_POWER + 1):
         polynom = HermitePolynom(power, table, x)
-        results_Hermite.append(polynom)
+        results_Hermite.append([power, polynom])
         print_row_b(power, (power)//2 + 1, x, polynom)
     
     print()
     print_third_exercise()
     print_row_b('n', 'x', "y(x) [Newton's pol.]", "y(x) [Hermite's pol.]")
-    for power in range(MAX_POWER):
-        print_row_b(power + MIN_POWER, x, results_Newton[power - 1],results_Hermite[power - 1])
+    for power in range(len(results_Hermite)):
+        print_row_b(results_Newton[power][0], x, results_Newton[power][1], results_Hermite[power][1])
 
     print()
     print_forth_exercise()
