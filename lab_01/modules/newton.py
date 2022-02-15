@@ -1,6 +1,6 @@
 from .basic_func import *
 
-def NewtonPolynom(power, table, arg):
+def NewtonPolynom(power, table, arg, nodes_used):
     '''
         Интерполяционный полином Ньютона
     '''    
@@ -13,6 +13,7 @@ def NewtonPolynom(power, table, arg):
     cur = 1
     for i in range(idx_start, idx_end + 1):
         cur *= arg - table.x[i]
+        nodes_used.append(table.x[i])
         diffs.append(cur)
     polynom_result = table.y[idx_start]
     for i in range(power):

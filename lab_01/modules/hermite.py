@@ -1,6 +1,6 @@
 from .basic_func import *
 
-def HermitePolynom(power, table, x):
+def HermitePolynom(power, table, x, nodes_used):
     '''
         Интерполяционный полином Эрмита
     '''
@@ -12,6 +12,7 @@ def HermitePolynom(power, table, x):
     for i in range(power):
         idxs.append(new_idx)
         cur *= (x - table.x[new_idx - i % 2])
+        nodes_used.append(table.x[new_idx - i % 2])
         result_polynom += NewtonForHermite(table, idxs)*cur
         new_idx += (i + 1) % 2
 
