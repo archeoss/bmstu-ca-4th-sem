@@ -35,7 +35,6 @@ def fill_polynom(polynoms, power, table, interval):
 
     polynoms.append([])
     idx_start, idx_end = interval
-#    print(polynoms)
     if power == 1:
         for i in range(idx_start, idx_end):
             polynoms[0].append((table.y[i + 1] - table.y[i])/(table.x[i+1] - table.x[i]))
@@ -56,6 +55,11 @@ def bin_search(xs, ys):
                 return x_at_zero
     return None
 
+'''
+    По какой-то причине, обратная интерполяция по методичке не сходилась с результатами, даваемая лабником
+    Это не "обратная" интерполяция, а обычная линейная, но она сходилась. 
+'''
+
 def BackwardNewtonePolynom(power, table, arg):
     '''
         Интерполяционный полином Ньютона
@@ -72,26 +76,3 @@ def BackwardNewtonePolynom(power, table, arg):
         new_ys = np.array(new_ys)
         result = bin_search(new_xs, new_ys)
     return result
-
-
-# def bullshitIntorpolation(table, power, arg):
-#     l = table.x[0]
-#     i = 0
-#     while (l * table.x[i] >= 0):
-#         i += 1
-
-#     r = table.x[i]
-#     if (l == r):
-#         return 'NO ROOT!'
-#     else:
-#         while(abs(l - r) > EPS):
-#             mid = (l + r) / 2
-#             nodes_used = []
-#             new = NewtonePolynom(power, table, mid, nodes_used)
-
-#             if (new > 0):
-#                 r = mid
-#             else:
-#                 l = mid
-        
-#         return l
