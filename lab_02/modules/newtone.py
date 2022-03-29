@@ -9,15 +9,15 @@ def TriInterpolation_Newtone(args_xyz, table : Table, x_array, y_array, z_array,
     res = 0
     kx, ky, kz = coefs
     x_polynom = []
-    for z_end in range(len(z_array)):
+    for z_end in range(kz + 1):
         y_polynom = []
-        for x_end in range(len(x_array)):
-            tmp = NewtonePolynom(ky, table.y[z_array[z_end]], table.subtables[z_array[z_end]][x_array[x_end]], y, (y_array[0], y_array[-1]))
+        for y_end in range(ky + 1):
+            tmp = NewtonePolynom(kx, table.x[z_array[z_end]], table.subtables[z_array[z_end]][y_array[y_end]], x, (x_array[0], x_array[-1]))
             y_polynom.append(tmp)
-        tmp = NewtonePolynom(kx, table.x[z_array[z_end]][x_array[0]:x_array[x_end] + 1], y_polynom, x, (0, len(y_polynom) - 1))
+        tmp = NewtonePolynom(ky, table.y[z_array[z_end]][y_array[0]:y_array[-1] + 1], y_polynom, y, (0, ky))
         x_polynom.append(tmp)
         
-    tmp = NewtonePolynom(kz, table.z[z_array[0]:z_array[z_end] + 1], x_polynom, z, (0, z_end))
+    tmp = NewtonePolynom(kz, table.z[z_array[0]:z_array[z_end] + 1], x_polynom, z, (0, kz))
     res = tmp
 
     return res
@@ -54,7 +54,6 @@ def fill_polynom(polynoms, power, arg_array, func_array, interval):
     '''
     if power < 1:
         return
-
     polynoms.append([])
     idx_start, idx_end = interval
     if power == 1:

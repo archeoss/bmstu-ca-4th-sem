@@ -1,7 +1,7 @@
 from .table import Table
 import numpy as np
 def func(x, y, z):
-    return np.exp(2 * x - y) * (z ** 2)
+    return (x ** 2 + y ** 2) / z
 
 def make_table(filename : str, x_inter : tuple[2], y_inter : tuple[2], z_inter : tuple[2], steps : tuple[3]):
     x_step, y_step, z_step = steps

@@ -8,10 +8,11 @@ DIR_NAME = os.path.dirname(__file__)
 DATA_PATH = 'data/table2.txt'
 DIR_DATA = os.path.join(DIR_NAME, DATA_PATH)
 
-X_START, X_END = 0, 1
-Y_START, Y_END = 0, 1
-Z_START, Z_END = 0, 2
-X_STEPS, Y_STEPS, Z_STEPS = 11, 11, 11
+X_START, X_END = -5, 5
+Y_START, Y_END = -3, 4
+Z_START, Z_END = -1, 2
+
+X_STEPS, Y_STEPS, Z_STEPS = 20, 50, 30
 
 def main():
     table = Table()
@@ -22,8 +23,8 @@ def main():
     kx, ky, kz = input_coefs("Input kx, ky, kz")
     
     z_start, z_end = find_interval(table.z, kz, z, table.subtable_count)
-    x_start, x_end = find_interval(table.x[z_start], kx, x, table.subtable_count)
-    y_start, y_end = find_interval(table.y[x_start], ky, y, table.subtable_count)
+    x_start, x_end = find_interval(table.x[z_start], kx, x, len(table.x[0]))
+    y_start, y_end = find_interval(table.y[x_start], ky, y, len(table.y[0]))
     
     inter_x = [x for x in range(x_start, x_end + 1)]
     inter_y = [x for x in range(y_start, y_end + 1)]
