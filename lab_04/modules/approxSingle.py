@@ -1,8 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pylab import mpl
-import math
-from .basic_func import *
 
 def polynomial_fitting(power, data_x, data_y, weight):
     matrix = []
