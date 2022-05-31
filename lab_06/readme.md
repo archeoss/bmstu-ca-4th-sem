@@ -1,5 +1,5 @@
 # Спасибо
 
-С первой частью помог @pauuser
+С первой частью помог [@pauuser](https://github.com/pauuser)
 
 :)
