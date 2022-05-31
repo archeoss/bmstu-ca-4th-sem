@@ -1,5 +1,5 @@
 # Спасибо
 
-За лабу спасибо @Mansurow
+За лабу спасибо [@Mansurow](https://github.com/Mansurow)
 
 :)
